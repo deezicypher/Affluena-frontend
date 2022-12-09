@@ -1,16 +1,12 @@
 import React from 'react'
-import styles from '../style';
 import Hero from '../components/Hero';
-import Modal from '../components/Modal';
-
-const {paddingX, flexCenter,flexStart, boxWidth} = styles;
-
+import FeatureTiles from '../components/FeatureTiles';
 
 const Home = () => {
   return (
    <>
    <Hero/>
-
+   <FeatureTiles/>
    </>
   )
 }
