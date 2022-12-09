@@ -27,17 +27,7 @@
   text-fill-color: transparent;
 }
 
-.bg-blue-gradient {
-  background: linear-gradient(
-    157.81deg,
-    #59a3e3 -43.27%,
-    #699eef -21.24%,
-    #4ea3e8 12.19%,
-    #3794f1 29.82%,
-    #46adf1 51.94%,
-    #3377cf 90.29%
-  );
-}
+
 
 
 .box-shadow {
@@ -74,6 +64,7 @@
 .feature-card:hover {
   background: var(--black-gradient);
   box-shadow: var(--card-shadow);
+  color: #fff;
 }
 
 .feedback-container .feedback-card:last-child {
@@ -84,8 +75,5 @@
   background: transparent;
 }
 
-.feedback-card:hover {
-  background: var(--black-gradient);
-}
 
 
