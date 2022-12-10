@@ -25,3 +25,21 @@ export const features = [
         content:'Our community is a place where like-minded investors can connect and share their experiences, insights, and ideas.'
     }
 ]
+
+export const feedBack = [
+  {
+    id:'1',
+    name:'Sarah Johnson',
+    feedback:"I love this site! It's so easy to find investment options that align with my values and goals, and I feel good knowing that my money is being used to support initiatives that are making a positive impact on the world. The expert insights and analysis are also incredibly helpful, and I've learned so much about impact investing thanks to this site. Highly recommend"
+  },
+  {
+    id:'2',
+    name:'David Williams',
+    feedback:"I love this site! It's so easy to find investment options that align with my values and goals, and I feel good knowing that my money is being used to support initiatives that are making a positive impact on the world. The expert insights and analysis are also incredibly helpful, and I've learned so much about impact investing thanks to this site. Highly recommend"
+  },
+  {
+    id:'3',
+    name:'Elizabeth Thompson',
+    feedback:"As a first-time investor, I was looking for a platform that would provide me with the tools and resources I needed to make informed decisions. This site has exceeded my expectations - not only do they offer a range of investment options, but they also provide expert insights and analysis, as well as educational materials and resources. The community is also great - I've made some great connections and have learned a lot from other members. I would definitely recommend this site to anyone looking to invest for a better future."
+  }
+]
