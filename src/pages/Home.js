@@ -4,6 +4,7 @@ import FeatureTiles from '../components/FeatureTiles';
 import About from '../components/About';
 import Features from '../components/Features';
 import Testimonials from '../components/Testimonials';
+import CTA from '../components/CTA';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
    <About/>
    <Features/>
    <Testimonials/>
+   <CTA/>
    </>
   )
 }
