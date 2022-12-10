@@ -43,3 +43,40 @@ export const feedBack = [
     feedback:"As a first-time investor, I was looking for a platform that would provide me with the tools and resources I needed to make informed decisions. This site has exceeded my expectations - not only do they offer a range of investment options, but they also provide expert insights and analysis, as well as educational materials and resources. The community is also great - I've made some great connections and have learned a lot from other members. I would definitely recommend this site to anyone looking to invest for a better future."
   }
 ]
+
+export const footerLinks = [
+  {
+    title: "Useful Links",
+    links: [
+      {
+        name: "About",
+        link: "/about",
+      },
+      {
+        name: "FAQ",
+        link: "#",
+      },
+      {
+        name: "Terms & Services",
+        link: "#",
+      },
+    ],
+  },
+  {
+    title: "Community",
+    links: [
+      {
+        name: "Help Center",
+        link: "/contact",
+      },
+      {
+        name: "Partners",
+        link: "/partners/",
+      },
+      {
+        name: "Blog",
+        link: "#",
+      },
+    ],
+  }
+];

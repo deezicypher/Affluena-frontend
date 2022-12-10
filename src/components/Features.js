@@ -11,7 +11,7 @@ const {section, sectionInfo, sectionImg} = layout;
 
 const Features = () => {
   return (
-    <div id="about" className={`${section}`}>
+    <div id="product" className={`${section}`}>
     <div className={sectionInfo}>
     <h2 className={`${headingSub} md:text-[-20px]`}>
       Unlock the power <br className='sm:block hidden' />
