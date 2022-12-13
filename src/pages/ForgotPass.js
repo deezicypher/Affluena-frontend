@@ -1,11 +1,31 @@
 
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 import logo from '../assets/img/fly.png';
-
+import axios from '../config/axios'
 
 const ForgotPass = () => {
+      const [email, setEmail] = useState();
 
-      const onSubmit = (data) => {
-        console.log(data)
+      const onSubmit = async e => {
+        e.preventDefault();
+       try{
+        toast.loading('Submiting...',{
+          id:'forgot'
+        });
+        const detail = await axios.post('/password/reset/', {
+                email: email
+            }).then(res => res.data.detail)
+        
+            toast.success(`${detail}`,{
+                id:'forgot'})
+
+          }catch(err){
+              toast.error("Request can't processed at the moment",{
+                id:'forgot'
+              })
+            }
+       
       }
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -21,7 +41,7 @@ const ForgotPass = () => {
         </h2>
       
       </div>
-      <form className="mt-8 space-y-6" onSubmit={onSubmit}>
+      <form className="mt-8 space-y-6" >
         <input type="hidden" name="remember" defaultValue="true" />
         <div className="-space-y-px flex flex-col  gap-5 rounded-md shadow-sm">
         <div>
@@ -31,6 +51,8 @@ const ForgotPass = () => {
                 <input
                   id="email-address"
                   name="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                   type="email"
                   autoComplete="email"
                   required
@@ -42,7 +64,7 @@ const ForgotPass = () => {
 
         <div>
           <button
-            type="submit"
+            onClick={e => onSubmit(e)}
             className="group relative flex w-full justify-center rounded-md border border-transparent bg-secondary py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2  focus:ring-offset-2"
           >
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
