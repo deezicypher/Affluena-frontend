@@ -50,7 +50,7 @@ const Register = () => {
       const formOptions = { resolver: yupResolver(formSchema) }
       const { register, handleSubmit, formState: { errors } } = useForm(formOptions);
 
-      const submit = (data) => {
+      const onSubmit = (data) => {
        
         signup(data)
       }
@@ -79,13 +79,15 @@ const Register = () => {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit(submit)}>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px flex flex-col  gap-5 rounded-md shadow-sm">
             <div>
                 <label htmlFor="name" className="sr-only">
                   Full Name
                 </label>
+                {errors.name && <p className='text-red-500 text-[14px] mb-2' role="alert">{errors.name?.message}</p>}
+               
                 <input
                   id="name"
                   name="name"
@@ -101,6 +103,8 @@ const Register = () => {
                 <label htmlFor="username" className="sr-only">
                   Username
                 </label>
+                {errors.username && <p className='text-red-500 text-[14px] mb-2' role="alert">{errors.username?.message}</p>}
+               
                 <input
                   id="username"
                   name="username"
@@ -116,6 +120,7 @@ const Register = () => {
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
+                {errors.email && <p className='text-red-500 text-[14px] mb-2' role="alert">{errors.email?.message}</p>}
                 <input
                   id="email-address"
                   name="email"
