@@ -11,6 +11,7 @@
     #050e1c -78.47%,
     #061832 91.61%
   );
+ 
   --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
 }
 
@@ -28,8 +29,24 @@
 }
 
 
-
-
+.PhoneInputInput{
+  display: block;
+      width: 100%;
+      height: calc(1.5rem + 2px);
+      line-height: 1.42857;
+      border: none;
+      box-shadow: none;
+      padding: 5px 5px;
+      font-size: 0.85rem;
+      transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out
+  }
+  .PhoneInputInput{
+   
+        border: none;
+        outline: none;
+            }
+  
+ 
 .box-shadow {
   box-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
 }

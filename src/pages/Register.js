@@ -1,19 +1,36 @@
-import {useState} from 'react'
+import { useState} from 'react'
 import logo from '../assets/img/fly.png'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useForm } from "react-hook-form";
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
+import { banks } from '../constants/constants';
+import { useAuthContext} from '../context/authContext';
+import EmailSent from './EmailSent';
+
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
+const passMatch = (data) => {
+   data.matches(
+  '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#!@$%^&*()+=]).{8,20}$',
+  `Should contains at least 8 characters and at most 20 characters\n 
+  Should contains at least one digit\n 
+  Should contains at least one upper case alphabet\n 
+  Should contains at least one lower case alphabet\n
+  Should contains at least one special character which includes !@#$%&*()+=^\n
+  Should doesn't contain any white space`
+)
+}
 
 const Register = () => {
     const [value, setValue] = useState();
-    
+    const [selected, setSelected] = useState(banks[0]);
+    const {signup, user} = useAuthContext();
+
+
     const formSchema = yup.object().shape({
         name: yup.string()
         .required('Please enter your Full Name'), 
@@ -25,6 +42,7 @@ const Register = () => {
         phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
         password: yup.string()
         .required('Please enter a password')
+        .matches(/^\S*$/, 'Whitespace is not allowed')
         .min(6, 'Password must be at 6 characters long'),
         confirmpassword: yup.string()
         .required('Confirm password')
@@ -34,10 +52,14 @@ const Register = () => {
       const formOptions = { resolver: yupResolver(formSchema) }
       const { register, handleSubmit, formState: { errors } } = useForm(formOptions);
 
-      const onSubmit = (data) => {
-        console.log(data)
+      const submit = (data) => {
+       
+        signup(data)
       }
 
+      if(user?.sent) return (
+        <EmailSent/>
+      )
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
@@ -57,7 +79,7 @@ const Register = () => {
               </a>
             </p>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit(submit)}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px flex flex-col  gap-5 rounded-md shadow-sm">
             <div>
@@ -69,6 +91,7 @@ const Register = () => {
                   name="name"
                   type="text"
                   autoComplete="name"
+                  {...register('name')}
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-secondary focus:outline-none focus:ring-secondary sm:text-sm"
                   placeholder="Full Name"
@@ -83,6 +106,7 @@ const Register = () => {
                   name="username"
                   type="text"
                   autoComplete="username"
+                  {...register('username')}
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-secondary focus:outline-none focus:ring-secondary sm:text-sm"
                   placeholder="Username"
@@ -97,6 +121,7 @@ const Register = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  {...register('email')}
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-secondary focus:outline-none focus:ring-secondary sm:text-sm"
                   placeholder="Email address"
@@ -117,6 +142,8 @@ defaultCountry="NG"
       className=" rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500  focus:border-secondary focus:outline-none focus:ring-secondary sm:text-sm"
          />
               </div>
+          
+           
               <div>
                 <label htmlFor="password" className="sr-only">
                   Password
@@ -152,6 +179,20 @@ defaultCountry="NG"
                 />
               </div>
             </div>
+            <div>
+                <label htmlFor="Code" className="sr-only">
+                  Referral Code (Optional)
+                </label>
+                <input
+                  id="code"
+                  name="code"
+                  type="text"
+                  autoComplete="code"
+           
+                  className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-secondary focus:outline-none focus:ring-secondary sm:text-sm"
+                  placeholder="Referral Code (Optional)"
+                />
+              </div>
 
             <div className="flex items-center justify-center">
         
@@ -161,6 +202,8 @@ defaultCountry="NG"
                 </a>
               </div>
             </div>
+
+            
 
             <div>
               <button

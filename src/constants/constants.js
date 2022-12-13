@@ -80,3 +80,94 @@ export const footerLinks = [
     ],
   }
 ];
+
+export const banks = [
+  {
+     value:"access",
+     name:"Access Bank"
+  },
+          {
+             value:"citibank",
+             name:"Citibank"
+          },
+          {
+             value:"diamond",
+             name:"Diamond Bank"
+          },
+          {
+             value:"ecobank",
+             name:"Ecobank"
+          },
+          {
+             value:"fidelity",
+             name:"Fidelity Bank"
+          },
+          {
+             value:"firstbank",
+             name:"First Bank"
+          },
+          {
+             value:"fcmb",
+             name:"First City Monument Bank (FCMB)"
+          },
+          {
+             value:"gtb",
+             name:"Guaranty Trust Bank (GTB)"
+          },
+          {
+             value:"heritage",
+             name:"Heritage Bank"
+          },
+          {
+             value:"keystone",
+             name:"Keystone Bank"
+          },
+          {
+             value:"polaris",
+             name:"Polaris Bank"
+          },
+          {
+             value:"providus",
+             name:"Providus Bank"
+          },
+          {
+             value:"stanbic",
+             name:"Stanbic IBTC Bank"
+          },
+          {
+             value:"standard",
+             name:"Standard Chartered Bank"
+          },
+          {
+             value:"sterling",
+             name:"Sterling Bank"
+          },
+          {
+             value:"suntrust",
+             name:"Suntrust Bank"
+          },
+          {
+             value:"union",
+             name:"Union Bank"
+          },
+          {
+             value:"uba",
+             name:"United Bank for Africa (UBA)"
+          },
+          {
+             value:"unity",
+             name:"Unity Bank"
+          },
+          {
+             value:"wema",
+             name:"Wema Bank"
+          },
+          {
+             value:"zenith",
+             name:"Zenith Bank"
+          },
+          {
+             value:"Kuda Bank",
+             name:"Kuda Bank"
+          },
+]

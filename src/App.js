@@ -12,6 +12,10 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import EmailSent from './pages/EmailSent';
+import ResetPass from './pages/ResetPass';
+import ForgotPass from './pages/ForgotPass';
+import VerfiyEmail from './pages/VerfiyEmail';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +33,21 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact/>,
+      },
+      {
+        path: "/mail-sent",
+        element: <EmailSent/>,
+      },
+      {path: '/reset-password',
+        element:<ResetPass/>
+      },
+      {
+        path:"/verify-email/:token",
+        element:<VerfiyEmail/>
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPass/>,
       }
     ]
 
