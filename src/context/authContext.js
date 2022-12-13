@@ -61,14 +61,22 @@ export const AuthContextProvider = ({children}) => {
       }
 
     const login = async data => {
+        console.log(data)
         try{
-            toast.loading('Loging in...', {
+            toast.loading('Loging you in...', {
                 id: 'login'
             })
-            const user = await axios.post('rest-auth/login', data).then(res => res.data)
+            const user = await axios.post('/rest-auth/login/', data).then(res => res.data)
+            if(user.error){
+                toast.error(`${user.error}`, {
+                    id: 'login'
+            })
+        }else{
             localStorage.setItem("user", JSON.stringify(user));
             setUser(user);
+            }
         }catch(err){
+            console.log(err);
             if(err.response.data.msg){
                 toast.error(`${err.response.data.msg}`,{
                     id:'login'
@@ -78,7 +86,9 @@ export const AuthContextProvider = ({children}) => {
                toast.error(`${err.response.data.non_field_errors[0]}`)
             }
             else{
-                toast.error('Unable to log you in at the moment')
+                toast.error('Unable to log you in at the moment', {
+                    id: 'login'
+                })
             }
         }
     }
