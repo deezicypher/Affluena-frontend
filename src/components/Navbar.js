@@ -27,7 +27,7 @@ const Navbar = () => {
 </defs>
 </svg>
         </div>
-        <div className="absolute left-[40%]  overflow-hidden blur-3xl opacity-40 ">
+        <div className="absolute left-[40%] -z-10 overflow-hidden blur-3xl opacity-40 ">
         <svg width="331" height="334" viewBox="0 0 331 334" fill="none" xmlns="http://www.w3.org/2000/svg">
 <ellipse cx="165.5" cy="167" rx="165.5" ry="167" fill="url(#paint0_radial_0_3)"/>
 <defs>
@@ -41,7 +41,7 @@ const Navbar = () => {
 
 
         </div>
-        <div className="absolute  right-10  md:top-0 md:right-0 opacity-70 ">
+        <div className="absolute  right-10 -z-10  md:top-0 md:right-0 opacity-70 ">
         <svg width="331" height="334" viewBox="0 0 331 334" fill="none" xmlns="http://www.w3.org/2000/svg">
 <ellipse cx="165.5" cy="167" rx="165.5" ry="167" fill="url(#paint0_radial_0_3)"/>
 <defs>
@@ -68,7 +68,7 @@ const Navbar = () => {
               <div className="flex lg:hidden">
                 <button
                   type="button"
-                  className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                  className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 "
                   onClick={() => setMobileMenuOpen(true)}
                 >
                   <span className="sr-only">Open main menu</span>
@@ -84,13 +84,12 @@ const Navbar = () => {
                   
                 ))}
               </div>
-              <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
-                <a
-                  href="#"
-                  className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
+              <div className="hidden lg:flex cursor-pointer lg:min-w-0 lg:flex-1 lg:justify-end  ">
+                <Link to="/login"
+                  className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold  leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20 "
                 >
                   Log in
-                </a>
+                </Link>
               </div>
             </nav>
             <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -126,13 +125,12 @@ const Navbar = () => {
                         </a>
                       ))}
                     </div>
-                    <div className="py-6">
-                      <a
-                        href="#"
-                        className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                    <div className="py-6 z-10">
+                      <Link to="/login"
+                        className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10 z-50"
                       >
                         Log in
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

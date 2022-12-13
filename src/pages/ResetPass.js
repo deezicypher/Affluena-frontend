@@ -5,7 +5,9 @@ import { useForm } from'react-hook-form';
 import logo from '../assets/img/fly.png';
 import axios from '../config/axios';
 import toast from 'react-hot-toast';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+
+
 
 const ResetPass = () => {
 
@@ -65,11 +67,13 @@ const ResetPass = () => {
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div className="w-full max-w-md space-y-8">
       <div>
+      <Link to="/">
         <img
           className="mx-auto h-12 w-auto"
           src={logo}
           alt="Affluena"
         />
+        </Link>
         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
           Reset Password
         </h2>

@@ -37,7 +37,7 @@ export const AuthContextProvider = ({children}) => {
             'content-type': 'multipart/form-data'
           }}).then(res => res.data)
     
-              console.log(detail)
+         
 
               const user = {
                 detail,

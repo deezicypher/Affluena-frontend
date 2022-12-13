@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import logo from '../assets/img/fly.png';
-import { Navigate, useParams, useNavigate} from "react-router-dom"
+import { Navigate, useParams, useNavigate, Link} from "react-router-dom"
 import axios from '../config/axios';
 import { toast } from 'react-hot-toast';
 
@@ -50,7 +50,7 @@ const VerfiyEmail = () => {
                 })
 
         }
-    }, [token]);
+    }, [token,navigate]);
 
     if (valid === true && redirect) {
         return <Navigate to="/login" />;
@@ -59,11 +59,13 @@ const VerfiyEmail = () => {
     <div className="flex min-h-full items-center justify-center py-[5rem] px-4 sm:px-6 lg:px-8">
     <div className="w-full max-w-md space-y-8">
       <div>
+      <Link to="/">
       <img
               className="mx-auto h-12 w-auto"
               src={logo}
               alt="Affluena"
             />
+            </Link>
  {valid === true && (
         <div className="text-center flex items-center justify-center">
         <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-secondary w-2/5 ">

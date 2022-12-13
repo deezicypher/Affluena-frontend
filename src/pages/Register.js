@@ -5,7 +5,6 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
-import { banks } from '../constants/constants';
 import { useAuthContext} from '../context/authContext';
 import EmailSent from './EmailSent';
 import { Link } from 'react-router-dom';
@@ -27,7 +26,6 @@ const passMatch = (data) => {
 
 const Register = () => {
     const [value, setValue] = useState();
-    const [selected, setSelected] = useState(banks[0]);
     const {signup, user} = useAuthContext();
 
 
@@ -64,11 +62,13 @@ const Register = () => {
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
+          <Link to="/">
             <img
               className="mx-auto h-12 w-auto"
               src={logo}
               alt="Affluena"
             />
+            </Link>
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
               Sign up 
             </h2>
