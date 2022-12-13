@@ -3,13 +3,22 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup';
 import { useForm } from'react-hook-form';
 import logo from '../assets/img/fly.png';
+import axios from '../config/axios';
+import toast from 'react-hot-toast';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const ResetPass = () => {
+
+    let { token } = useParams();
+    let { uid } = useParams();
+    const navigate = useNavigate();
+
     const formSchema = yup.object().shape({
         password: yup.string()
         .required('Please enter a password')
+        .matches(/^\S*$/, 'Whitespace is not allowed')
         .min(6, 'Password must be at 6 characters long'),
-        confirmpassword: yup.string()
+        password2: yup.string()
         .required('Confirm password')
         .oneOf([yup.ref('password')], 'Passwords does not match'),
       })
@@ -17,9 +26,41 @@ const ResetPass = () => {
       const formOptions = { resolver: yupResolver(formSchema) }
       const { register, handleSubmit, formState: { errors } } = useForm(formOptions);
 
-      const onSubmit = (data) => {
-        console.log(data)
+      const onSubmit = async data => {
+          const {password, password2} = data;
+        try{
+          toast.loading('Reseting...', {
+            id: 'reset'
+          })
+        const detail = await axios.post('/rest-auth/password/reset/confirm/', {
+          new_password1: password,
+          new_password2: password2,
+          uid: uid,
+          token: token,
+      }).then(res => res.data.detail)
+      toast.success(`${detail}`, {
+        id:'reset'
+      })
+      setTimeout(() => {
+        toast.loading('Redirecting to login...',{
+          id: 'reset'
+        })
+      },2000)
+    navigate('/login')
+      }catch(err){
+        if(err.response.data.token){
+          toast.error('Invalid Token, Token has already been used or expired',{
+            id:'reset'
+          })
+        }
+        else{
+          toast.error('Reset Failed, try again later',{
+            id:'reset'
+          })
+        }
+     
       }
+    }
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div className="w-full max-w-md space-y-8">
@@ -56,18 +97,18 @@ const ResetPass = () => {
                 />
               </div>
               <div>
-                <label htmlFor="confirmpassword" className="sr-only">
+                <label htmlFor="password2" className="sr-only">
                   Confirm Password
                 </label>
                 {errors.confirmpassword && <p className='text-red-500 text-[14px] mb-2' role="alert">{errors.confirmpassword?.message}</p>}
                
                 <input
-                  id="confirmpassword"
-                  name="confirmpassword"
+                  id="password2"
+                  name="password2"
                   type="password"
                   autoComplete="current-password"
                   required
-                  {...register('confirmpassword')}
+                  {...register('password2')}
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-secondary focus:outline-none focus:ring-secondary sm:text-sm"
                   placeholder="Confirm Password"
                 />

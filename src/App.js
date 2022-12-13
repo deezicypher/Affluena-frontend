@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         path: "/mail-sent",
         element: <EmailSent/>,
       },
-      {path: '/reset-password',
+      {path: '/password-reset/:uid/:token',
         element:<ResetPass/>
       },
       {

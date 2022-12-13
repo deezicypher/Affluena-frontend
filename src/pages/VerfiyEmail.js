@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import logo from '../assets/img/fly.png';
-import { Navigate, useParams} from "react-router-dom"
+import { Navigate, useParams, useNavigate} from "react-router-dom"
 import axios from '../config/axios';
 import { toast } from 'react-hot-toast';
 
@@ -8,7 +8,8 @@ import { toast } from 'react-hot-toast';
 const VerfiyEmail = () => {
     const [valid, setValid] = useState(false);
     const [redirect, setRedirect] = useState(null);
-    let { token } = useParams()
+    let { token } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -35,6 +36,7 @@ const VerfiyEmail = () => {
                               id:"email"
                             });
                         }, 2000)
+                        navigate('/login')
                     } else {
                         setValid(false)
                        toast.error('Verification Failed. Email may be already verified or the link is broken.',{
