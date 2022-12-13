@@ -2,11 +2,13 @@ import {createContext, useContext, useState, useEffect} from "react";
 import { toast } from "react-hot-toast";
 import axios from  "../config/axios"
 
-
 const Context = createContext();
 
 export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useState('');
+    const [regInfo, setRegInfo] = useState();
+
+
    
     const logout = () => {
         localStorage.removeItem("user");
@@ -31,7 +33,6 @@ export const AuthContextProvider = ({children}) => {
                 full_name: name,
                 code: code,
             }
-      console.log(doc);
         try{
         const detail = await axios.post("/rest-auth/registration/",doc,{ headers: {
             'content-type': 'multipart/form-data'
@@ -49,7 +50,7 @@ export const AuthContextProvider = ({children}) => {
               toast.success(`${detail.detail}`, {
                 id:'signup'
             })
-              setUser(user);
+              setRegInfo(user);
     
         }catch(error) {
             toast.error(`${error.response.data.error}`, {
@@ -59,6 +60,28 @@ export const AuthContextProvider = ({children}) => {
           }
       }
 
+    const login = async data => {
+        try{
+            toast.loading('Loging in...', {
+                id: 'login'
+            })
+            const user = await axios.post('rest-auth/login', data).then(res => res.data)
+            localStorage.setItem("user", JSON.stringify(user));
+            setUser(user);
+        }catch(err){
+            if(err.response.data.msg){
+                toast.error(`${err.response.data.msg}`,{
+                    id:'login'
+                })
+     
+            }else if (err.response.data.non_field_errors){
+               toast.error(`${err.response.data.non_field_errors[0]}`)
+            }
+            else{
+                toast.error('Unable to log you in at the moment')
+            }
+        }
+    }
 
     const authCheckState = () => {
               const user = JSON.parse(localStorage.getItem("user"));
@@ -87,7 +110,10 @@ export const AuthContextProvider = ({children}) => {
         <Context.Provider 
         value={{
             user,
-            signup
+            regInfo,
+            signup,
+            login,
+            logout,
         }}>{children}</Context.Provider>
     )
     }

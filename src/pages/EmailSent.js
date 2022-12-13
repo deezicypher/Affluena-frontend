@@ -6,9 +6,9 @@ import toast from 'react-hot-toast'
 
 
 const EmailSent = () => {
-  const {user} = useAuthContext();
+  const {regInfo} = useAuthContext();
 
-  const email = user.email;
+  const email = regInfo.email;
 
   const onSubmit = async e => {
     e.preventDefault();

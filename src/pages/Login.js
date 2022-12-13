@@ -1,13 +1,25 @@
 import {useEffect} from 'react'
 import logo from '../assets/img/fly.png'
-import { Link } from 'react-router-dom'
+import { Link , Navigate} from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { useForm } from "react-hook-form";
+import { useAuthContext } from '../context/authContext';
+
 
 
 const Login = () => {
+  const {user} = useAuthContext();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+
+
   useEffect(() => {
     toast.dismiss()
   }, [])
+
+  if (user) {
+    return <Navigate to="/user" />
+}
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
@@ -29,7 +41,7 @@ const Login = () => {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px flex flex-col  gap-5 rounded-md shadow-sm">
             
