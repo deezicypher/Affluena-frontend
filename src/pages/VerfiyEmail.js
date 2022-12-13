@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import logo from '../assets/img/fly.png';
 import { Navigate, useParams} from "react-router-dom"
-import axios from 'axios';
+import axios from '../config/axios';
 import { toast } from 'react-hot-toast';
 
 
@@ -31,8 +31,10 @@ const VerfiyEmail = () => {
                         localStorage.setItem("Email", 1)
                         setTimeout(() => {
                             setRedirect(true)
-                            toast.loading('Redirecting...');
-                        }, 5000)
+                            toast.loading('Redirecting to Login...',{
+                              id:"email"
+                            });
+                        }, 2000)
                     } else {
                         setValid(false)
                        toast.error('Verification Failed. Email may be already verified or the link is broken.',{

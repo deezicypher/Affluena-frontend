@@ -1,9 +1,13 @@
-import React from 'react'
+import {useEffect} from 'react'
 import logo from '../assets/img/fly.png'
-import { LockClosedIcon } from '@heroicons/react/20/solid'
+import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 
 const Login = () => {
+  useEffect(() => {
+    toast.dismiss()
+  }, [])
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
@@ -18,9 +22,9 @@ const Login = () => {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               Or{' '}
-              <a href="#" className="font-medium text-secondary">
+              <Link to="/register" className="font-medium text-secondary">
                 Register
-              </a>
+              </Link>
             </p>
           </div>
           <form className="mt-8 space-y-6" action="#" method="POST">

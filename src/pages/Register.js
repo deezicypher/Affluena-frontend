@@ -2,13 +2,13 @@ import { useState} from 'react'
 import logo from '../assets/img/fly.png'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import toast from 'react-hot-toast';
 import { useForm } from "react-hook-form";
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import { banks } from '../constants/constants';
 import { useAuthContext} from '../context/authContext';
 import EmailSent from './EmailSent';
+import { Link } from 'react-router-dom';
 
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -74,9 +74,9 @@ const Register = () => {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               Or{' '}
-              <a href="#" className="font-medium text-secondary">
+              <Link to="/login" className="font-medium text-secondary">
                 Login
-              </a>
+              </Link>
             </p>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit(submit)}>
