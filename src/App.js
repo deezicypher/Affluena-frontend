@@ -2,7 +2,8 @@ import React from 'react'
 
 import {
   createBrowserRouter,
-  RouterProvider
+  RouterProvider,
+  Navigate
 } from "react-router-dom";
 
 import './app.css';
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register/>,
+  },
+  {
+    path:"*",
+    element: <Navigate to="/" />,
   }
   
 ]);

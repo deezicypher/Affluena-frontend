@@ -21,7 +21,7 @@ const Login = () => {
   }, [])
 
   if (user) {
-    return <Navigate to="/app" />
+    window.location.href = '/app'
 }
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
