@@ -72,8 +72,10 @@ export const AuthContextProvider = ({children}) => {
                     id: 'login'
             })
         }else{
-            localStorage.setItem("user", JSON.stringify(user));
+            const doc = {...user, expirationDate: new Date(new Date().getTime() + 3600 * 1000)}
+            localStorage.setItem("user", JSON.stringify(doc));
             setUser(user);
+
             }
         }catch(err){
             console.log(err);
@@ -95,16 +97,20 @@ export const AuthContextProvider = ({children}) => {
 
     const authCheckState = () => {
               const user = JSON.parse(localStorage.getItem("user"));
+              console.log(user)
               if (user === undefined || user === null) {
                logout()
+               console.log("1")
               } else {
                 const expirationDate = new Date(user.expirationDate);
                 if (expirationDate <= new Date()) {
                   logout()
+                  console.log("2")
                 } else {
                     checkAuthTimeout(
                       (expirationDate.getTime() - new Date().getTime()) / 1000
                     )
+                    console.log("3")
                 }
               }
     
