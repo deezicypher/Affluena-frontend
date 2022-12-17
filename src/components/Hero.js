@@ -159,24 +159,24 @@ const Hero = () => {
                     Invest in positive change.
                     </p>
                     <div className="mt-8 flex gap-x-4 sm:justify-center">
-                      <a
-                        href="#"
+                      <Link
+                       to="/register"
                         className="inline-block rounded-lg bg-secondary px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-[#00d5a0] hover:bg-[#00d5a0]-700 hover:ring-[#00d5a0]-700"
                       >
                         Get started
                         <span className="text-white-200" aria-hidden="true">
                           &rarr;
                         </span>
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        to="/About"
                         className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-[#00d5a0] hover:ring-[#00d5a0]"
                       >
                         Learn More
                         <span className="text-gray-400" aria-hidden="true">
                           &rarr;
                         </span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
