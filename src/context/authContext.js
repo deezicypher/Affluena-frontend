@@ -72,9 +72,11 @@ export const AuthContextProvider = ({children}) => {
                     id: 'login'
             })
         }else{
-            const doc = {...user, expirationDate: new Date(new Date().getTime() + 3600 * 1000)}
-            localStorage.setItem("user", JSON.stringify(doc));
-            setUser(user);
+            
+            const data = user.user_detail;
+            const newuser = {token:user.key,...data,expirationDate: new Date(new Date().getTime() + 3600 * 1000)}
+            localStorage.setItem("user", JSON.stringify(newuser));
+            setUser(newuser);
 
             }
         }catch(err){
