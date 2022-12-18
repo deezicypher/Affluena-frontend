@@ -34,11 +34,11 @@ const Footer = () => {
       </div>
       <div className='flex  w-full flex-col md:mt-0 mt-6'>
         <div className='flex flex-col bg-black rounded-2xl py-2 text-white'>
-      <img src={github} alt=""  className='h-[30px] mt-5 object-contain'/>
+        <img src={github} alt=""  className='h-[30px] mt-5 object-contain'/>
      
         
-        <p className='text-center mt-5  text-[10px]'>DeeziTheViper</p>
-        </div>
+        <a href='https://github.com/deezitheviper'> <p className='text-center mt-5  text-[12px]'>DeeziTheViper</p>
+        </a></div>
 
       <div className='mt-10 font-poppins font-normal text-center text-[14px] leading-[20px] '>
         &copy; 2022 Affluena. All Rights Reserved
