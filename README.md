@@ -3,4 +3,4 @@
 
 # Visuals
 
-!(./visuals/aff.gif)
+![product gif](./visuals/aff.gif)
