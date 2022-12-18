@@ -3,4 +3,5 @@
 
 # Visuals
 
-![product gif](./visuals/aff.gif)
+ #### [https://affluena.netlify.app](https://affluena.netlify.app) 
+![Product Gif](./visuals/aff.gif)
