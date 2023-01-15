@@ -31,7 +31,7 @@ const Hero = () => {
 </defs>
 </svg>
         </div>
-        <div className="absolute left-[40%] -z-10 overflow-hidden blur-3xl opacity-40 ">
+        <div className="absolute left-[10] -z-10 overflow-hidden blur-3xl opacity-40 ">
         <svg width="331" height="334" viewBox="0 0 331 334" fill="none" xmlns="http://www.w3.org/2000/svg">
 <ellipse cx="165.5" cy="167" rx="165.5" ry="167" fill="url(#paint0_radial_0_3)"/>
 <defs>
