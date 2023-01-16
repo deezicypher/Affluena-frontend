@@ -34,15 +34,15 @@ const Features = () => {
   
   <div className={`${sectionImg} flex-col ${flexStart} gap-10`}>
     {features?.map(feature => (
-        <div className={`flex  flex-row sm:p-6 rounded-[20px] feature-card  `} key={feature.id} >
+        <div className={`flex  flex-row p-4 sm:p-6 rounded-[20px] feature-card  `} key={feature.id} >
         <div className={`w-[64px] h-[64px] rounded-full ${flexCenter} bg-dimBlue`}>
         {feature.svg}
         </div>
         <div className='flex-1  flex flex-col ml-3'>
-          <h4 className='font-poppins font-semibold text-[18px] leading-[23px] mb-1'>
+          <h4 className='font-poppins font-semibold text-[15px] sm:text-[18px] leading-[23px] mb-1'>
             {feature.title}
           </h4>
-          <p className='font-poppins font-normal text-[14px] leading-[23px]' >
+          <p className='font-poppins font-normal text-[12px] sm:text-[14px] leading-[23px]' >
             {feature.content}
           </p>
         </div>
