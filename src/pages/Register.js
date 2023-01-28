@@ -26,7 +26,7 @@ const passMatch = (data) => {
 
 const Register = () => {
     const [value, setValue] = useState();
-    const {signup, user} = useAuthContext();
+    const {signup, regInfo} = useAuthContext();
 
 
     const formSchema = yup.object().shape({
@@ -55,7 +55,7 @@ const Register = () => {
         signup(data)
       }
 
-      if(user?.sent) return (
+      if(regInfo?.sent) return (
         <EmailSent/>
       )
   return (
